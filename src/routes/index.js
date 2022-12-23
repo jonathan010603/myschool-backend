@@ -1,9 +1,9 @@
 /* eslint-disable import/newline-after-import */
 import { Router } from 'express';
-import homeController from '../controllers/Home';
+import studentsController from '../controllers/Students';
 
 const router = new Router();
 
-router.get('/', homeController.index);
+router.get('/students', studentsController.getAll);
 
 export default router;

@@ -1,5 +1,5 @@
 import express from 'express';
-import home from './src/routes/home';
+import router from './src/routes';
 
 class App {
   constructor() {
@@ -14,7 +14,7 @@ class App {
   }
 
   routes() {
-    this.app.use('/', home);
+    this.app.use('/api/v1', router);
   }
 }
 
