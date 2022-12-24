@@ -18,7 +18,15 @@ class Students {
 
   async getAllStudents(req, res) {
     try {
-      const students = await StudentModel.findAll();
+      const students = await StudentModel.findAll({
+        attributes: [
+          'studentID', 'classroomID',
+          'studentName', 'studentLastName',
+          'studentBirthDate', 'studentPhone',
+          'studentCPF', 'studentEmail',
+          'studentUsername', 'studentShift'
+        ]
+      });
       res.json(students);
     } catch (error) {
       console.log(error);
@@ -28,9 +36,18 @@ class Students {
 
   async getByStudentID(req, res) {
     try {
-      const students = await StudentModel.findAll({
-        where: { studentID: req.params.id }
-      });
+      const students = await StudentModel.findAll(
+        {
+          where: { studentID: req.params.id },
+          attributes: [
+            'studentID', 'classroomID',
+            'studentName', 'studentLastName',
+            'studentBirthDate', 'studentPhone',
+            'studentCPF', 'studentEmail',
+            'studentUsername', 'studentShift'
+          ]
+        }
+      );
       res.json(students);
     } catch (error) {
       console.log(error);
