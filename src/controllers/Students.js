@@ -28,6 +28,13 @@ class Students {
       res.json(result);
     });
   }
+
+  getByStudentID(req, res) {
+    con.query(`SELECT * FROM Students WHERE StudentID=${req.params.StudentID}`, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+  }
 }
 
 export default new Students();
